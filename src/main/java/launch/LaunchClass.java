@@ -10,10 +10,11 @@ import java.util.Scanner;
 
 public class LaunchClass {
 
+    public static CityDao cityDao;
+
     public static void run() throws FileNotFoundException {
-        CityDao cityDao = new CityDao();
-        CityParserService cityParserService = new CityParserService(cityDao);
-        CitySorterService citySorterService = new CitySorterService(cityDao);
+
+        CityParserService cityParserService = new CityParserService(new CityDao());
 
         System.out.println("---------------------------------------");
         System.out.println("Welcome to City data management program");
@@ -28,7 +29,8 @@ public class LaunchClass {
         }
         if (upload == 0) {
             System.out.println("File uploaded successfully");
-            cityParserService.parseFileToObject(FilePathConfig.getFileName()).getParsedCityList().forEach(System.out::println);
+            cityDao = cityParserService.parseFileToObject(FilePathConfig.getFileName());
+            cityDao.getParsedCityList().forEach(System.out::println);
             System.out.println("To go to main menu press 9");
             Scanner bridgeScanner = new Scanner(System.in);
             int bridge = bridgeScanner.nextInt();
@@ -46,15 +48,19 @@ public class LaunchClass {
                 Scanner menuScanner = new Scanner(System.in);
                 int menu = menuScanner.nextInt();
                 if (menu == 1) {
+                    CitySorterService citySorterService = new CitySorterService(cityDao);
                     citySorterService.cityNameSort().forEach(System.out::println);
                 }
                 if (menu == 2) {
+                    CitySorterService citySorterService = new CitySorterService(cityDao);
                     citySorterService.cityAndDistrictSort().forEach(System.out::println);
                 }
                 if (menu == 3) {
+                    CitySorterService citySorterService = new CitySorterService(cityDao);
                     System.out.println(citySorterService.largePopulationCity());
                 }
                 if (menu == 4) {
+                    CitySorterService citySorterService = new CitySorterService(cityDao);
                     System.out.println(citySorterService.cityNumberByRegions());
                 }
             }

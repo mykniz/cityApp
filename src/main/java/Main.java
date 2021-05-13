@@ -14,16 +14,19 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException, SQLException, ClassNotFoundException {
 
-        //LaunchClass.run();
+        /**
+         parse data to dao
+         */
+        LaunchClass.run();
 
-        CityParserService cityParserService = new CityParserService(new CityDao());
-        CityDao cityDao = cityParserService.parseFileToObject(FilePathConfig.getFileName());
+        /**
+         * work with H2 database
+         */
 
         DatabaseConnectionConfig databaseConnectionConfig = new DatabaseConnectionConfig();
-//      databaseConnectionConfig.truncateTable();
         databaseConnectionConfig.dropTable();
         databaseConnectionConfig.createTable();
-        databaseConnectionConfig.insertData(cityDao);
+        databaseConnectionConfig.insertData(LaunchClass.cityDao);
         databaseConnectionConfig.getData();
     }
 }
