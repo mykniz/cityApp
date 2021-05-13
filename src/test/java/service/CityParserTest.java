@@ -100,6 +100,7 @@ class CityParserTest {
 
     @Test
     @DisplayName("Testing the cities number by regions sorting")
+
     void cityNumberByRegions() throws FileNotFoundException {
         String result = "Южный - 2" + "\n" + "Сибирский - 1";
         assertEquals(citySorterService.cityNumberByRegions(), result);
@@ -115,7 +116,4 @@ class CityParserTest {
     public void tearDownAll() {
         System.out.println("All tests have been completed successfully");
     }
-
-
-
 }
