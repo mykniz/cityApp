@@ -17,7 +17,9 @@ public class Main {
         /**
          parse data to dao
          */
-        LaunchClass.run();
+     //   LaunchClass.run();
+
+
 
         /**
          * work with H2 database
