@@ -1,13 +1,6 @@
 import config.DatabaseConnectionConfig;
-import config.FilePathConfig;
-import dao.CityDao;
 import launch.LaunchClass;
-import service.CityParserService;
-import service.CitySorterService;
-
 import java.io.FileNotFoundException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Main {
